@@ -93,26 +93,7 @@ into the {body} tag of the default.hbs template --}}
     {{/if}}
 
 </article>
-</main>
-
-{{!-- A signup call to action is displayed here, unless viewed as a logged-in member --}}
-{{#if @site.members_enabled}}
-{{#unless @member}}
-{{#unless @site.comments_enabled}}
-{{#if access}}
-    <section class="footer-cta outer">
-        <div class="inner">
-            {{#if @custom.email_signup_text}}<h2 class="footer-cta-title">{{@custom.email_signup_text}}</h2>{{/if}}
-            <a class="footer-cta-button" href="#/portal" data-portal>
-                <div class="footer-cta-input">Enter your email</div>
-                <span>Subscribe</span>
-            </a>
-        </div>
-    </section>
-{{/if}}
-{{/unless}}
-{{/unless}}
-{{/if}}
+<hr>
 
 
 {{!-- Read more links, just above the footer --}}
@@ -123,7 +104,7 @@ into the {body} tag of the default.hbs template --}}
     This query gets the latest 3 posts on the site, but adds a filter to
     exclude the post we're currently on from being included. --}}
     {{#get "posts" filter="id:-{{id}}" limit="3" as |more_posts|}}
-
+<h2 class="moreProduct">More Products to you</h2>
         {{#if more_posts}}
             <aside class="read-more-wrap outer">
                 <div class="read-more inner">
@@ -138,3 +119,4 @@ into the {body} tag of the default.hbs template --}}
 {{/if}}
 
 {{/post}}
+</main>

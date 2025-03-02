@@ -1,0 +1,65 @@
+{{!< default}}
+
+<section class="about-story">
+  <div class="container">
+    <div class="about-content">
+      <img src="{{asset 'images/Medicinal.jpeg'}}" alt="Cocopeat" />
+      <div class="about-text">
+        <h1>Welcome to Herbal Medicinal Products</h1>
+        <p class="one">In Sri Lanka, in the distant past, information about
+          herbs was inscribed on palm leaves with a pointed metal stylus which
+          contained information on the curative properties of herbs, their food,
+          medicinal and cosmetic values. We take pride in sourcing the finest
+          herbs to create our herbal products. From soothing teas to
+          revitalizing herbal remedies, each product is carefully crafted to
+          harness the healing properties of nature. Our herbal offerings are
+          designed to support your health, promote relaxation, and enhance your
+          overall wellness. With MAXNATURE, you can indulge in the natural
+          goodness that your body deserves.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<main id="site-main" class="site-main outer">
+  <div class="inner posts">
+    <section class="all-products">
+      <div class="all-container">
+        <h2>Our Products</h2>
+        {{#get "posts" filter="tag:medicinal"}}
+          <div class="all-product-grid">
+            {{#foreach posts}}
+              <a href="{{url}}" class="all-product-card">
+                <img src="{{feature_image}}" alt="{{title}}" />
+                <h3>{{title}}</h3>
+                <p class="price">Rs.{{excerpt}}</p>
+                <p class="description">{{content words="20"}}...</p>
+              </a>
+            {{/foreach}}
+          </div>
+        {{/get}}
+      </div>
+    </section>
+    <br /><br />
+
+    <section class="characteristics">
+      <h2>Characteristics of Herbal Medicinal Products:</h2>
+      <ul>
+        <li>100% natural and no chemicals will be used
+        </li>
+        <li>Hygienically prepared under maximum care with the supervision of a
+          Senior Ayurvedic Practitioner
+        </li>
+        <li>No side effects as no toxic materials are used
+        </li>
+        <li>Biodegradable
+        </li>
+        <li>Packed in filter bags for convenient use
+        </li>
+        <li>Available for disorders such as: (Gastritis, Derivative, Diabetic,
+          Bronchitis, Arthritis, High blood pressure)
+        </li>
+      </ul>
+    </section>
+  </div>
+</main>

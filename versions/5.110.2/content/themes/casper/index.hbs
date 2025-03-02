@@ -2,27 +2,7 @@
 {{!-- The tag above means: insert everything in this file
 into the {body} of the default.hbs template --}}
 
-<div class="site-header-content outer{{#match @custom.header_style "Left aligned"}} left-aligned{{/match}}{{#unless @custom.show_publication_cover}}{{#match @custom.header_style "Hidden"}} no-content{{/match}}{{/unless}}">
-
-    {{#if @custom.show_publication_cover}}
-        {{#if @site.cover_image}}
-            {{!-- This is a responsive image, it loads different sizes depending on device
-            https://medium.freecodecamp.org/a-guide-to-responsive-images-with-ready-to-use-templates-c400bd65c433 --}}
-            <img class="site-header-cover"
-                srcset="{{img_url @site.cover_image size="s"}} 300w,
-                        {{img_url @site.cover_image size="m"}} 600w,
-                        {{img_url @site.cover_image size="l"}} 1000w,
-                        {{img_url @site.cover_image size="xl"}} 2000w"
-                sizes="100vw"
-                src="{{img_url @site.cover_image size="xl"}}"
-                alt="{{@site.title}}"
-            />
-        {{/if}}
-    {{/if}}
-
-    {{#match @custom.header_style "!=" "Hidden"}}
-        <div class="site-header-inner inner">
-            <section class="hero">
+<section class="hero">
     <div class="hero-container">
         <!-- Left Side: Static Image -->
         <div class="hero-image">
@@ -57,23 +37,49 @@ into the {body} of the default.hbs template --}}
         </div>
     </div>
 </section>
-        </div>
-    {{/match}}
 
-</div>
-
-{{!-- The main content area --}}
 <main id="site-main" class="site-main outer">
-<div class="inner posts">
+  <div class="inner posts">
+    <section class="who-we-are">
+        <div class="container">
+                <div class="row">
+                    <!-- Left Column: Text -->
+                    <div class="col left-content">
+                        <h2>Who We Are</h2>
+                        <p>
+                        Maxol (Private) Limited is a Sri Lankan pioneer in eco-friendly,
+                        sustainable manufacturing and export of high-quality, non-traditional
+                        agro and herbal products. Established in 2023, we set out to redefine
+                        the export landscape by introducing innovative, value-added products
+                        that reflect Sri Lanka’s rich heritage and commitment to the environment.
+                        </p>
+                    </div>
+                
+                        <!-- Right Column: Image with Change Buttons -->
+                    <div class="right-slider">
+                        <div class="photo-slider">
+                            <img src="{{asset 'images/img01.jpg'}}" class="slider-img active" alt="Slide 1">
+                            <img src="{{asset 'images/img02.jpg'}}" class="slider-img" alt="Slide 2">
+                            <img src="{{asset 'images/img03.jpg'}}" class="slider-img" alt="Slide 3">
+                            <img src="{{asset 'images/img04.jpg'}}" class="slider-img" alt="Slide 3">
+                            <img src="{{asset 'images/img05.jpg'}}" class="slider-img" alt="Slide 3">
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </section>
 
-    <div class="post-feed">
-        {{#foreach posts}}
-            {{!-- The tag below includes the markup for each post - partials/post-card.hbs --}}
-            {{> "post-card"}}
-        {{/foreach}}
-    </div>
-
+        {{! Product Section }}
+        <section class="products">
+        <h2>Our Products</h2>
+        <div class="container">
+            <div class="post-feed">
+            {{#foreach posts limit="3"}}
+                {{> "post-card"}}
+            {{/foreach}}
+            </div>
+        </div>
+        </section>
     {{pagination}}
-
-</div>
+  </div>
 </main>

@@ -16,6 +16,13 @@
     {{!-- Theme assets - use the {asset} helper to reference styles & scripts,
     this will take care of caching and cache-busting automatically --}}
     <link rel="stylesheet" type="text/css" href="{{asset "built/screen.css"}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset "css/custom.css"}}" />
+
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+
+
 
     {{!-- This tag outputs all your advanced SEO meta, structured data, and other important settings,
     it should always be the last tag before the closing head tag --}}
@@ -23,6 +30,7 @@
 
 </head>
 <body class="{{body_class}} is-head-{{#match @custom.navigation_layout "Logo on cover"}}left-logo{{else match @custom.navigation_layout "Logo in the middle"}}middle-logo{{else}}stacked{{/match}}{{#match @custom.title_font "=" "Elegant serif"}} has-serif-title{{/match}}{{#match @custom.body_font "=" "Modern sans-serif"}} has-sans-body{{/match}}{{#if @custom.show_publication_cover}} has-cover{{/if}}">
+<script src="{{asset "js/main.js"}}"></script>
 <div class="viewport">
 
     <header id="gh-head" class="gh-head outer{{#match @custom.header_style "Hidden"}} is-header-hidden{{/match}}">
@@ -54,39 +62,71 @@
                         <button class="gh-search gh-icon-btn" aria-label="Search this site" data-ghost-search>{{> "icons/search"}}</button>
                     {{/match}}
                 {{else}}
-                    <button class="gh-search gh-icon-btn" aria-label="Search this site" data-ghost-search>{{> "icons/search"}}</button>
-                    <div class="gh-head-members">
-                        {{#unless @member}}
-                            {{#unless @site.members_invite_only}}
-                                <a class="gh-head-link" href="#/portal/signin" data-portal="signin">Sign in</a>
-                                <a class="gh-head-button" href="#/portal/signup" data-portal="signup">Subscribe</a>
-                            {{else}}
-                                <a class="gh-head-button" href="#/portal/signin" data-portal="signin">Sign in</a>
-                            {{/unless}}
-                        {{else}}
-                            <a class="gh-head-button" href="#/portal/account" data-portal="account">Account</a>
-                        {{/unless}}
-                    </div>
+                    <button class="gh-search gh-icon-btn" aria-label="Search this site" data-ghost-search>{{> "icons/search"}}</button>                  
                 {{/unless}}
             </div>
         </div>
     </header>
-
-    <div class="site-content">
         {{!-- All other templates get inserted here, index.hbs, post.hbs, etc --}}
         {{{body}}}
     </div>
 
     {{!-- The global footer at the very bottom of the screen --}}
-    <footer class="site-footer outer">
-        <div class="inner">
-            <section class="copyright"><a href="{{@site.url}}">{{@site.title}}</a> &copy; {{date format="YYYY"}}</section>
-            <nav class="site-footer-nav">
-                {{navigation type="secondary"}}
-            </nav>
-            <div class="gh-powered-by"><a href="https://ghost.org/" target="_blank" rel="noopener">Powered by Ghost</a></div>
-        </div>
-    </footer>
+      {{!-- Custom Footer --}}
+<footer class="site-footer outer">
+        <div class="footer-columns">
+            <!-- Column 1: Quick Links -->
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about/">About us</a></li>
+                    <li><a href="/Cocopeat/">Cocopeat</a></li>
+                    <li><a href="/medicinalProducts/">Herbal Medicinal Products </a></li>
+                </ul>
+            </div>
+
+            <!-- Column 2: Contact Us -->
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <ul>
+                    <li>Phone: <a href="tel:+94 773 220 022">+94 773 220 022</a></li>
+                    <li>Phone: <a href="tel:++94 777 575 697">+94 777 575 697</a></li>
+                    <li>Email: <a href="mailto:maxol@maxolsl.com">maxol@maxolsl.com</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 3: Registered Office -->
+            <div class="footer-column">
+                <h3>Registered Office</h3>
+                <p>
+                    No.75 / 14,D.L.Pathirage Mawatha,<br>
+                    Gangodawila,Nugegoda (10250),<br>
+                    Sri Lanka.
+                </p>
+                <div class="social-media-icons">
+                    <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+
+            <!-- Column 4: Operational Office -->
+            <div class="footer-column">
+                <h3>Operational Office</h3>
+                <p>
+                    66/3/3, Kirimetiyagara,<br>
+                    Kadawatha (11850),<br>
+                    Sri Lanka.
+                </p>
+            </div>
+       </div>
+       <!-- Copyright Section -->
+                <section class="copyright">
+                    &copy; {{date format="YYYY"}} MaxSol Corporation. All rights reserved.
+                </section>
+</footer>
 
 </div>
 {{!-- /.viewport --}}
@@ -115,6 +155,7 @@ $(document).ready(function () {
 
 {{!-- Ghost outputs required functional scripts with this tag - it should always be the last thing before the closing body tag --}}
 {{ghost_foot}}
+
 
 </body>
 </html>
